@@ -1,27 +1,28 @@
-# 링크드리스트 - 에디터 (백준 실버2)
-# 문제 링크: https://www.acmicpc.net/problem/1406
-
-word = input().rstrip()
+word = input()
 M = int(input())
 
-left_stack = list(word)
+left_stack = []
 right_stack = []
+for j in word:
+    left_stack.append(j)
 
-for _ in range(M):
+for i in range(M):
     command_input = input().split()
     command = command_input[0]
 
     match command:
         case "L":
             if left_stack:
-                right_stack.append(left_stack.pop())
+                right_stack.insert(0, left_stack.pop())
         case "D":
             if right_stack:
-                left_stack.append(right_stack.pop())
+                temp = right_stack[0]
+                del right_stack[0]
+                left_stack.append(temp)
         case "B":
             if left_stack:
                 left_stack.pop()
         case "P":
             left_stack.append(command_input[1])
 
-print("".join(left_stack + right_stack[::-1]))
+print("".join(left_stack + right_stack))
