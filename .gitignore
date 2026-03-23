@@ -94,3 +94,5 @@ dmypy.json
 *.swo
 *~
 
+# VS Code Extension (CPH)
+.cph
