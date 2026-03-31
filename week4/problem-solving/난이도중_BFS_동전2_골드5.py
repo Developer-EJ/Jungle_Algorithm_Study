@@ -13,7 +13,7 @@ def bfs(remain):
     count_coin = 0
 
     while q:
-        # 현재 레벨의 상태 개수
+        # 현재 계층에서 처리해야할 코인 수
         size = len(q)
 
         for _ in range(size):
@@ -22,6 +22,7 @@ def bfs(remain):
             for coin in coins:
                 next_sum = cur_sum + coin
 
+                # 만들어진 금액이 목표 금액을 초과하면 continue
                 if next_sum > remain:
                     continue
 
